@@ -7,12 +7,12 @@ class Counter extends Component {
 
   increase=() => {
     this.props.onUpdate(1)
-    this.props.updateNumber(this.props.number + 1)
+    this.props.updateNumber(this.props.number + 1, this.props.index)
   }
 
   decrease=() => {
     this.props.onUpdate(-1)
-    this.props.updateNumber(this.props.number - 1)
+    this.props.updateNumber(this.props.number - 1, this.props.index)
   }
 
   render() {
