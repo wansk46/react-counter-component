@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <CounterGroup size={3}/>
     );
-  }
+  }k
 }
 
 export default App;
