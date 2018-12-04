@@ -6,15 +6,16 @@ class CounterGroup extends Component {
     super(prop)
     this.state = {
       counter: new Array(prop.size).fill(0),
+      count: 0,
       sum: 0,
     }
   }
   updateSum=(delta) => {
-    this.setState({sum: this.state.sum+delta})
+    this.state.sum += delta;
+    this.setState(this.state)
   }
 
   onSubmitFunc = (event) => {
-    console.log(this.refs.inputField.value);
     event.preventDefault();
     this.setState({
       counter: new Array(Number(this.refs.inputField.value)).fill(0),
@@ -22,13 +23,16 @@ class CounterGroup extends Component {
     })
   }
 
-
+  updateNum = (number) => {
+    this.state.count = number;
+    this.setState(this.state);
+  }
 
   render() {
     return (
       <div>
-        {this.state.counter.map(() => <Counter onUpdate={this.updateSum}/>)}
-        <form onSubmit={this.onSubmitFunc}>
+        {this.state.counter.map(() => <Counter updateNumber={this.updateNum} number={this.state.count} onUpdate={this.updateSum}/>)}
+        <form onSubmit={this.onSubmitFunc} >
             <input ref="inputField"/>
             <button type="submit"> Counter </button>
         </form>
